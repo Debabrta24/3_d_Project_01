@@ -7,7 +7,6 @@
 }
 
 html, body {
-    overflow: hidden;
     height: 100%;
     width: 100%;
 }
@@ -16,10 +15,12 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: black;
     color: #e7e7e7;
-    height: 100vh;
+    min-height: 100vh;
     line-height: 1.5;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .img-gradient {
@@ -49,11 +50,11 @@ body {
 .container {
     width: 100%;
     max-width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0 auto;
     padding: 0 2rem;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
 }
@@ -163,16 +164,18 @@ nav a:hover {
 main {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    height: calc(100vh - 6rem);
-    gap: 1.5rem;
+    min-height: calc(100vh - 6rem);
+    gap: 0;
     flex-wrap: nowrap;
     width: 100%;
     max-width: 100%;
     padding: 0;
     margin: 0;
     overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 .content {
@@ -181,22 +184,38 @@ main {
     z-index: 5;
     padding: 0;
     margin-left: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 
 .text-content {
-    flex: 1 1 0;
+    flex: 0 0 50%;
+    width: 50%;
     max-width: 50%;
     min-width: 0;
     z-index: 5;
     margin-left: 5%;
     margin-top: 0;
     padding-top: 0;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @media (max-width: 1200px) {
     .text-content {
+        flex: 0 0 50%;
+        width: 50%;
+        max-width: 50%;
         margin-left: 4%;
-        max-width: 55%;
+    }
+    
+    .spline-container {
+        flex: 0 0 50%;
+        width: 50%;
+        max-width: 50%;
     }
 }
 
@@ -306,23 +325,35 @@ main {
 }
 
 .spline-container {
-    flex: 1 1 0;
-    width: 100%;
+    flex: 0 0 50%;
+    width: 50%;
     max-width: 50%;
     min-width: 0;
+    height: 600px;
+    min-height: 500px;
+    max-height: 80vh;
     aspect-ratio: 4 / 3;
     position: relative;
     overflow: visible;
     margin: 0;
     margin-right: 5%;
-    z-index: 10;
+    z-index: 100;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent;
+    order: 2;
 }
 
 @media (max-width: 1200px) {
     .spline-container {
         max-width: 50%;
-        min-width: 0;
+        min-width: 350px;
         margin-right: 4%;
+        z-index: 100;
+        visibility: visible;
     }
 }
 
@@ -330,12 +361,23 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    z-index: 10;
-    visibility: visible;
-    opacity: 1;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    z-index: 100;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto;
+    background: transparent;
+}
+
+spline-viewer {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
 }
 
 
@@ -358,6 +400,9 @@ main {
         max-width: 600px;
         min-width: 350px;
         flex: 1 1 50%;
+        z-index: 100;
+        visibility: visible;
+        display: block;
     }
 
     nav {
@@ -436,8 +481,8 @@ main {
         max-width: 100%;
         min-width: 100%;
         aspect-ratio: 16 / 9;
-        height: auto;
-        max-height: 40vh;
+        height: 45vh;
+        max-height: none;
         margin: 0;
         z-index: 10;
         overflow: visible;
