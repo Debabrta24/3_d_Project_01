@@ -13,39 +13,46 @@
     <div class="layer-blur">
 
     </div>
-    <div class="conatiner">
+    <div class="container">
         <header>
             <h1 class="logo">
                 MCODE
             </h1>
 
-            <nav>
+            <nav class="nav-menu">
                 <a href="#">COMPANY</a>
                 <a href="#">FEATURES</a>
                 <a href="#">RESOURSE</a>
                 <a href="#">DOCS</a>
             </nav>
             <button class="btn-signing">SIGNING</button>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </header>
 
 
 
         <div class="content">
             <main>
-                <div class="tag-box">
-                    <div class="tag">INTRUCTING &wedbar;</div>
-                    <br>
-                    <h1>EMAIL FOR<br> DEVELOPERS</h1>
-                    <p class="description">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. In fugiat dolores expedita rem ullam
-                    </p>
-                    <div class="buttons">
-                        <a href="" class="btn-get-started">Documentation&gt;</a>
-                        <a href="" class="btn-signin-main">GetStarted</a>
+                <div class="text-content">
+                    <div class="tag-box">
+                        <div class="tag">INTRUCTING &wedbar;</div>
+                        <br>
+                        <h1>EMAIL FOR<br> DEVELOPERS</h1>
+                        <p class="description">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. In fugiat dolores expedita rem ullam
+                        </p>
+                        <div class="buttons">
+                            <a href="" class="btn-get-started">Documentation&gt;</a>
+                            <a href="" class="btn-signin-main">GetStarted</a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="test">
+                <div class="spline-container">
                     <spline-viewer class="robot-3d"
                         url="https://prod.spline.design/Ty8kXQfa7YJeVZrY/scene.splinecode"></spline-viewer>
                 </div>
@@ -56,10 +63,30 @@
 
     </div>
 
-    <!-- <script type="module" src="./node_modules/@splinetool/viewer/build/spline-viewer.js"></script> -->
- <script type="module" src="/spline/spline-viewer.js" defer></script>
+    <!-- <script type="module" src="./node_modules/@splinetool/viewer/build/spline-viewer.js"></script>
+    <script type="module" src="./public/spline/spline-viewer.js" defer></script> -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.28/build/spline-viewer.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
 
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
 
+            // Close menu when clicking on a link
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+    </script>
 
 </body>
 
