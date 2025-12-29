@@ -178,15 +178,20 @@ main {
     z-index: 1;
 }
 
+main > .spline-container {
+    order: 1;
+}
+
+main > .text-content {
+    order: 2;
+}
+
 .content {
     width: 100%;
     max-width: 100%;
     z-index: 5;
     padding: 0;
     margin-left: 0;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
 }
 
 .text-content {
@@ -195,10 +200,11 @@ main {
     max-width: 50%;
     min-width: 0;
     z-index: 5;
-    margin-left: 5%;
+    margin-left: 0;
+    margin-right: 5%;
     margin-top: 0;
     padding-top: 0;
-    order: 1;
+    order: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -209,13 +215,16 @@ main {
         flex: 0 0 50%;
         width: 50%;
         max-width: 50%;
-        margin-left: 4%;
+        margin-left: 0;
+        margin-right: 4%;
     }
     
     .spline-container {
         flex: 0 0 50%;
         width: 50%;
         max-width: 50%;
+        margin-left: 4%;
+        margin-right: 0;
     }
 }
 
@@ -336,7 +345,8 @@ main {
     position: relative;
     overflow: visible;
     margin: 0;
-    margin-right: 5%;
+    margin-left: 5%;
+    margin-right: 0;
     z-index: 100;
     display: flex !important;
     align-items: center;
@@ -344,7 +354,7 @@ main {
     visibility: visible !important;
     opacity: 1 !important;
     background: transparent;
-    order: 2;
+    order: 1;
 }
 
 @media (max-width: 1200px) {
@@ -458,6 +468,7 @@ spline-viewer {
         overflow-y: auto;
         overflow-x: hidden;
         flex: 1;
+        flex-direction: column;
     }
 
     main {
@@ -470,13 +481,16 @@ spline-viewer {
 
     .text-content {
         order: 2;
+        flex: 1 1 auto;
         max-width: 100%;
         width: 100%;
         z-index: 5;
+        margin-left: 0;
     }
 
     .spline-container {
         order: 1;
+        flex: 1 1 auto;
         width: 100%;
         max-width: 100%;
         min-width: 100%;
@@ -484,6 +498,7 @@ spline-viewer {
         height: 45vh;
         max-height: none;
         margin: 0;
+        margin-right: 0;
         z-index: 10;
         overflow: visible;
     }
